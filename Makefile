@@ -1,7 +1,7 @@
 DOCKER=docker-compose
 DOCKER-EXEC=$(DOCKER) exec
 EXEC-PHP=$(DOCKER-EXEC) php
-CONSOLE=php bin/console
+CONSOLE= $(DOCKER-EXEC) php bin/console
 
 #docker
 build:
