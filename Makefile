@@ -32,3 +32,22 @@ reset-db:
 	$(CONSOLE) doctrine:database:drop --if-exists --force
 	$(CONSOLE) doctrine:database:create
 	$(CONSOLE) doctrine:schema:create
+
+fixtures:
+	$(CONSOLE) doctrine:fixtures:load --no-interaction --purge-with-truncate
+
+db-reset-with-fixtures: reset-db fixtures
+
+cs-fix:
+	$(EXEC-PHP) vendor/bin/php-cs-fixer fix -v
+
+cs-dump:
+	$(EXEC-PHP) vendor/bin/php-cs-fixer fix --dry-run -v
+
+static-analysis:
+	$(EXEC-PHP) vendor/bin/phpstan analyse --memory-limit=2G
+
+composer-validate:
+	$(EXEC-PHP) composer validate
+
+ci: cs-dump static-analysis composer-validate

@@ -1,9 +1,7 @@
 parameters:
     level: max
     paths:
-        - bin/
         - config/
-        - public/
         - src/
         - migrations/
     reportWrongPhpDocTypeInVarTag: true

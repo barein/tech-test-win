@@ -1,5 +1,7 @@
 {
     "type": "project",
+    "name": "barein/winlassie",
+    "description": "project for winlassie",
     "license": "proprietary",
     "minimum-stability": "stable",
     "prefer-stable": true,
