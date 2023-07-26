@@ -1,0 +1,18 @@
+parameters:
+    level: max
+    paths:
+        - bin/
+        - config/
+        - public/
+        - src/
+        - migrations/
+    reportWrongPhpDocTypeInVarTag: true
+    reportAlwaysTrueInLastCondition: true
+    checkImplicitMixed: true
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    reportMaybesInMethodSignatures: true
+    checkExplicitMixedMissingReturn: true
+    checkAlwaysTrueStrictComparison: true
+    checkAlwaysTrueInstanceof: true
+    checkAlwaysTrueCheckTypeFunctionCall: true
+    checkGenericClassInNonGenericObjectType: false
