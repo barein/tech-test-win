@@ -1,0 +1,57 @@
+version:  '3.8'
+
+networks:
+  winlassie: {}
+
+services:
+
+  db:
+    image: mysql:8.0.31
+    networks:
+      - winlassie
+    volumes:
+      - type: volume
+        source: db-data
+        target: /var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: winlassie_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - target: 3306
+        published: 3306
+
+  nginx:
+    image: nginx:alpine
+    networks:
+      - winlassie
+    volumes:
+      - type: bind
+        source: ./backend/public/
+        target: /usr/src/app
+      - type: bind
+        source: ./docker/nginx/default.conf
+        target: /etc/nginx/conf.d/default.conf
+        read_only: true
+    ports:
+      - target: 80
+        published: 80
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    networks:
+      - winlassie
+    volumes:
+      - type: bind
+        source: ./backend/
+        target: /app
+    depends_on:
+      - db
+
+volumes:
+  db-data: {}
