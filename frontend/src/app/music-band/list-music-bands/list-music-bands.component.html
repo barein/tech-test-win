@@ -1,0 +1,26 @@
+<h1>Groupes de musique</h1>
+
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Description</th>
+    <th>Pays d'origine</th>
+    <th>Ville d'origine</th>
+    <th>Année début</th>
+    <th>Année de séparation</th>
+    <th>Fondateurs</th>
+    <th>Membres</th>
+    <th>Courant musical</th>
+  </tr>
+  <tr *ngFor="let musicBand of musicBands">
+    <td>{{ musicBand.name }}</td>
+    <td>{{ musicBand.description }}</td>
+    <td>{{ musicBand.originCountry }}</td>
+    <td>{{ musicBand.originCity }}</td>
+    <td>{{ musicBand.startingYear }}</td>
+    <td>{{ musicBand.bandSplitYear }}</td>
+    <td>{{ musicBand.founders }}</td>
+    <td>{{ musicBand.membersCount }}</td>
+    <td>{{ musicBand.musicalMovement }}</td>
+  </tr>
+</table>
