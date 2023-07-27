@@ -18,7 +18,7 @@ final class Version20230727093149 extends AbstractMigration
     {
         $this->addSql('
             CREATE TABLE music_band (
-                id BINARY(16) NOT NULL COMMENT \'(DC2Type:ulid)\', 
+                id VARCHAR(26) NOT NULL COMMENT \'(DC2Type:ulid)\', 
                 name VARCHAR(255) NOT NULL, 
                 origin_country VARCHAR(255) NOT NULL, 
                 origin_city VARCHAR(255) NOT NULL, 

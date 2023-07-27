@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Shared\Infrastructure;
 
 use App\Shared\Domain\MusicBand;
+use App\Shared\Domain\MusicBandNotFoundException;
 use App\Shared\Domain\MusicBandRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Uid\Ulid;
 
 /**
  * @extends ServiceEntityRepository<MusicBand>
@@ -30,5 +32,16 @@ class MusicBandRepository extends ServiceEntityRepository implements MusicBandRe
     public function list(): array
     {
         return $this->findAll();
+    }
+
+    public function delete(Ulid $musicBandId): void
+    {
+        $musicBand = $this->find($musicBandId);
+
+        if ($musicBand === null) {
+            throw new MusicBandNotFoundException($musicBandId);
+        }
+
+        $this->getEntityManager()->remove($musicBand);
     }
 }

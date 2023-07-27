@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Shared\Domain;
 
+use App\Shared\Infrastructure\Doctrine\DBAL\Type\UlidType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Types\UlidType;
 use Symfony\Component\Uid\Ulid;
 
 #[ORM\Entity()]
