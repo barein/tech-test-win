@@ -17,4 +17,9 @@ interface MusicBandRepositoryInterface
      * @throws MusicBandNotFoundException
      */
     public function delete(Ulid $musicBandId): void;
+
+    /**
+     * @throws MusicBandNotFoundException
+     */
+    public function get(Ulid $musicBandId): MusicBand;
 }

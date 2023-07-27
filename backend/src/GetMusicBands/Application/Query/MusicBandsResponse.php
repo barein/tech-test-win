@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\GetMusicBands\Application\Query;
 
+use App\GetMusicBand\Application\Query\MusicBandResponse;
+
 class MusicBandsResponse
 {
     /** @var MusicBandResponse[] */

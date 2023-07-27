@@ -36,12 +36,19 @@ class MusicBandRepository extends ServiceEntityRepository implements MusicBandRe
 
     public function delete(Ulid $musicBandId): void
     {
+        $musicBand = $this->get($musicBandId);
+
+        $this->getEntityManager()->remove($musicBand);
+    }
+
+    public function get(Ulid $musicBandId): MusicBand
+    {
         $musicBand = $this->find($musicBandId);
 
         if ($musicBand === null) {
             throw new MusicBandNotFoundException($musicBandId);
         }
 
-        $this->getEntityManager()->remove($musicBand);
+        return $musicBand;
     }
 }

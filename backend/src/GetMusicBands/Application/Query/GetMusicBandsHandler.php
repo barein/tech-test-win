@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\GetMusicBands\Application\Query;
 
+use App\GetMusicBand\Application\Query\MusicBandResponse;
 use App\Shared\Domain\MusicBand;
 use App\Shared\Domain\MusicBandRepositoryInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;

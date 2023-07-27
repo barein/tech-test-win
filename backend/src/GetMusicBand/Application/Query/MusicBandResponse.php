@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\GetMusicBands\Application\Query;
+namespace App\GetMusicBand\Application\Query;
 
 use Symfony\Component\Uid\Ulid;
 
