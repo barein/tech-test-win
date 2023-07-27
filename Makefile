@@ -41,7 +41,7 @@ migrations-apply:
 	$(CONSOLE) doctrine:migration:migrate --no-interaction
 
 fixtures:
-	$(CONSOLE) doctrine:fixtures:load --no-interaction --purge-with-truncate
+	$(CONSOLE) doctrine:fixtures:load --no-interaction
 
 db-reset: db-drop db-create migrations-apply
 db-reset-with-fixtures: db-reset fixtures
