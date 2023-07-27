@@ -25,6 +25,9 @@ restart: stop start
 bash-php:
 	$(EXEC-PHP) bash
 
+clear-cache:
+	$(CONSOLE) c:c
+
 composer-install:
 	$(EXEC-PHP) composer install --prefer-dist --no-progress --no-interaction
 
