@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MusicBand } from "./music-band";
 import { MusicBandApiGateway } from "./music-band-api-gateway";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,9 @@ export class MusicBandRepository {
     });
 
     return this.musicBands;
+  }
+
+  delete(id: string): Observable<any> {
+    return this.musicBandApiGateway.delete(id);
   }
 }

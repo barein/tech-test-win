@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {MusicBand} from "./music-band";
+import { MusicBand } from "./music-band";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,9 @@ export class MusicBandApiGateway {
       observe: 'body',
       responseType: 'json',
     });
+  }
+
+  delete(id: string): Observable<any> {
+    return this.http.delete(`http://localhost:80/music-bands/${id}`);
   }
 }

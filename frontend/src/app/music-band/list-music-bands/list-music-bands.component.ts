@@ -16,6 +16,25 @@ export class ListMusicBandsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getMusicBands();
+  }
+
+  private getMusicBands(): void {
     this.musicBands = this.musicBandRepository.getList();
+  }
+
+  public deleteMusicBand(id: string): void {
+    this.musicBandRepository.delete(id).subscribe(() => {
+      let musicBandIndexToDelete = undefined;
+      this.musicBands.forEach(function (value, index) {
+        if (value.id === id) {
+          musicBandIndexToDelete = index;
+        }
+      });
+
+      if(musicBandIndexToDelete !== undefined) {
+        this.musicBands.splice(musicBandIndexToDelete, 1);
+      }
+    });
   }
 }

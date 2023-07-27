@@ -1,6 +1,6 @@
 <h1>Groupes de musique</h1>
 
-<table>
+<table *ngIf="musicBands.length !== 0">
   <tr>
     <th>Nom</th>
     <th>Description</th>
@@ -11,6 +11,7 @@
     <th>Fondateurs</th>
     <th>Membres</th>
     <th>Courant musical</th>
+    <th>Actions</th>
   </tr>
   <tr *ngFor="let musicBand of musicBands">
     <td>{{ musicBand.name }}</td>
@@ -22,5 +23,12 @@
     <td>{{ musicBand.founders }}</td>
     <td>{{ musicBand.membersCount }}</td>
     <td>{{ musicBand.musicalMovement }}</td>
+    <td>
+      <span title="Supprimer" (click)="deleteMusicBand(musicBand.id)" class="cursor-pointer">🗑️</span>
+    </td>
   </tr>
 </table>
+
+<p *ngIf="musicBands.length === 0">
+  Aucun groupe de musique
+</p>
