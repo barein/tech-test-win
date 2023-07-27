@@ -31,15 +31,20 @@ clear-cache:
 composer-install:
 	$(EXEC-PHP) composer install --prefer-dist --no-progress --no-interaction
 
-reset-db:
+db-create:
+	$(CONSOLE) doctrine:database:create --if-not-exists
+
+db-drop:
 	$(CONSOLE) doctrine:database:drop --if-exists --force
-	$(CONSOLE) doctrine:database:create
-	$(CONSOLE) doctrine:schema:create
+
+migrations-apply:
+	$(CONSOLE) doctrine:migration:migrate --no-interaction
 
 fixtures:
 	$(CONSOLE) doctrine:fixtures:load --no-interaction --purge-with-truncate
 
-db-reset-with-fixtures: reset-db fixtures
+db-reset: db-drop db-create migrations-apply
+db-reset-with-fixtures: db-reset fixtures
 
 cs-fix:
 	$(EXEC-PHP) vendor/bin/php-cs-fixer fix -v
