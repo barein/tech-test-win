@@ -58,4 +58,7 @@ static-analysis:
 composer-validate:
 	$(EXEC-PHP) composer validate
 
-ci: cs-dump static-analysis composer-validate
+tests:
+	$(EXEC-PHP) bin/phpunit
+
+ci: composer-validate cs-dump static-analysis tests
