@@ -15,11 +15,11 @@ class GetMusicBandsControllerTest extends WebTestCase
     use Factories;
     use ResetDatabase;
 
-    public function test_get_music_bands_successfully(): void
+    public function testGetMusicBandsSuccessfully(): void
     {
         MusicBandFactory::createMany(5);
 
-        self::ensureKernelShutdown();
+        static::ensureKernelShutdown();
         $client = static::createClient();
         $client->request(Request::METHOD_GET, '/music-bands');
         $payload = $client->getResponse()->getContent();
@@ -37,12 +37,11 @@ class GetMusicBandsControllerTest extends WebTestCase
             'bandSplitYear',
             'founders',
             'membersCount',
-            'musicalMovement'
+            'musicalMovement',
         ];
 
         foreach ($expectedKeys as $expectedKey) {
             self::assertArrayHasKey($expectedKey, $musicBands[0]);
         }
     }
-
 }

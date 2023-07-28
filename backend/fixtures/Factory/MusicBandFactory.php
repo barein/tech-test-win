@@ -70,8 +70,8 @@ final class MusicBandFactory extends ModelFactory
             'name' => self::faker()->sentence(nbWords: 3),
             'originCountry' => self::faker()->country(),
             'originCity' => self::faker()->city(),
-            'startingYear' => (int) self::faker()->year,
-            'bandSplitYear' => self::faker()->randomElements([(int) self::faker()->year, null])[0],
+            'startingYear' => (int) self::faker()->year(),
+            'bandSplitYear' => self::faker()->randomElements([(int) self::faker()->year(), null])[0],
             'founders' => self::faker()->randomElements([$this->generateFoundersList(), null])[0],
             'membersCount' => self::faker()->randomElements([random_int(1, 10), null])[0],
             'musicalMovement' => self::faker()->randomElements([
