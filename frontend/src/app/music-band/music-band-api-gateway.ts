@@ -12,7 +12,7 @@ export class MusicBandApiGateway {
     private http: HttpClient
   ) {}
 
-  public getMusicBands() {
+  public getMusicBands(): Observable<MusicBand[]> {
     return this.http.get<MusicBand[]>('http://localhost:80/music-bands', {
       observe: 'body',
       responseType: 'json',
@@ -21,5 +21,12 @@ export class MusicBandApiGateway {
 
   delete(id: string): Observable<any> {
     return this.http.delete(`http://localhost:80/music-bands/${id}`);
+  }
+
+  getMusicBand(musicBandId: string): Observable<MusicBand> {
+    return this.http.get<MusicBand>(`http://localhost:80/music-bands/${musicBandId}`, {
+      observe: 'body',
+      responseType: 'json',
+    });
   }
 }

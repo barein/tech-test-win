@@ -9,6 +9,8 @@ import {Observable} from "rxjs";
 export class MusicBandRepository {
   private musicBands: Array<MusicBand> = [];
 
+  private currentMusicBand: MusicBand|undefined;
+
   constructor(
     private musicBandApiGateway: MusicBandApiGateway
   ) {
@@ -41,5 +43,26 @@ export class MusicBandRepository {
 
   delete(id: string): Observable<any> {
     return this.musicBandApiGateway.delete(id);
+  }
+
+  get(musicBandId: string): MusicBand|undefined {
+    const getMusicBandResponse = this.musicBandApiGateway.getMusicBand(musicBandId);
+
+    getMusicBandResponse.forEach((musicBand: MusicBand) => {
+        this.currentMusicBand = new MusicBand(
+          musicBand.id,
+          musicBand.name,
+          musicBand.description,
+          musicBand.originCountry,
+          musicBand.originCity,
+          musicBand.startingYear,
+          musicBand.bandSplitYear,
+          musicBand.founders,
+          musicBand.membersCount,
+          musicBand.musicalMovement,
+        );
+    });
+
+    return this.currentMusicBand;
   }
 }

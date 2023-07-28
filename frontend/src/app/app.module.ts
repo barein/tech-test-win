@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListMusicBandsComponent } from './music-band/list-music-bands/list-music-bands.component';
 import { HttpClientModule } from "@angular/common/http";
+import { ViewMusicBandComponent } from './music-band/view-music-band/view-music-band.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListMusicBandsComponent
+    ListMusicBandsComponent,
+    ViewMusicBandComponent
   ],
   imports: [
     BrowserModule,

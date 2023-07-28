@@ -14,7 +14,11 @@
     <th>Actions</th>
   </tr>
   <tr *ngFor="let musicBand of musicBands">
-    <td>{{ musicBand.name }}</td>
+    <td>
+      <a [routerLink]="['/music-bands', musicBand.id]">
+        {{ musicBand.name }}
+      </a>
+    </td>
     <td>{{ musicBand.description }}</td>
     <td>{{ musicBand.originCountry }}</td>
     <td>{{ musicBand.originCity }}</td>
