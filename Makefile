@@ -4,6 +4,8 @@ EXEC-PHP=$(DOCKER-EXEC) php
 CONSOLE= $(DOCKER-EXEC) php bin/console
 
 #docker
+install: build start db-reset-with-fixtures
+
 build:
 	$(DOCKER) build
 
