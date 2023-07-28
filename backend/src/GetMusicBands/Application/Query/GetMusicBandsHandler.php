@@ -10,10 +10,10 @@ use App\Shared\Domain\MusicBandRepositoryInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-class GetMusicBandsHandler
+readonly class GetMusicBandsHandler
 {
     public function __construct(
-        private readonly MusicBandRepositoryInterface $musicBandRepository,
+        private MusicBandRepositoryInterface $musicBandRepository,
     ) {
     }
 

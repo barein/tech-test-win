@@ -9,10 +9,10 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Uid\Ulid;
 
 #[AsMessageHandler]
-class GetMusicBandHandler
+readonly class GetMusicBandHandler
 {
     public function __construct(
-        private readonly MusicBandRepositoryInterface $musicBandRepository,
+        private MusicBandRepositoryInterface $musicBandRepository,
     ) {
     }
 

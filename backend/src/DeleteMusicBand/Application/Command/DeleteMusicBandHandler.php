@@ -9,17 +9,15 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Uid\Ulid;
 
 #[AsMessageHandler]
-class DeleteMusicBandHandler
+readonly class DeleteMusicBandHandler
 {
     public function __construct(
-        private readonly MusicBandRepositoryInterface $musicBandRepository,
+        private MusicBandRepositoryInterface $musicBandRepository,
     ) {
     }
 
     public function __invoke(DeleteMusicBand $command): void
     {
-        $musicBandId = new Ulid($command->musicBandId);
-
-        $this->musicBandRepository->delete($musicBandId);
+        $this->musicBandRepository->delete(new Ulid($command->musicBandId));
     }
 }

@@ -14,8 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GetMusicBandsController extends AbstractController
 {
-    public function __construct(private QueryBusInterface $queryBus)
-    {
+    public function __construct(
+        private QueryBusInterface $queryBus,
+    ) {
     }
 
     #[Route(path: '/music-bands', methods: Request::METHOD_GET)]
